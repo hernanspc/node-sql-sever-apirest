@@ -6,10 +6,13 @@ import {
   deleteProductById,
   getTotalProducts,
   updateProductById,
-  getBancos
+  getBancos, LISTAR_TIPO_CAMBIO_WEB
 } from "../controllers/products.controller";
 
 const router = Router();
+
+//Tipo Cambio
+router.post("/TSP_LISTAR_TIPO_CAMBIO_WEB", LISTAR_TIPO_CAMBIO_WEB);
 
 router.get("/banco", getBancos);
 

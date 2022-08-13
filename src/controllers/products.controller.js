@@ -1,9 +1,35 @@
+import { NText } from "mssql";
 import { getConnection, querys, sql } from "../database";
+
+export const LISTAR_TIPO_CAMBIO_WEB = async (req, res) => {
+  const { empresa } = req.body;
+  console.log('body ', empresa);
+
+  if (empresa == null) {
+    return res.status(400).json({ msg: "Bad Request. Please fill all fields" });
+  }
+
+  try {
+    const pool = await getConnection();
+
+    const result = await pool
+      .request()
+      // .input("empresa", sql.Text, empresa)
+      // .input("description", sql.Text, description)
+      // .execute(querys.listarTipoCambioWeb);
+      .execute(querys.tspListarBanco);
+
+    // console.log('json result: ', res.json(result.recordsets[0]))
+    return res.json(result.recordset);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+}
 
 export const getBancos = async (req, res) => {
   try {
     const pool = await getConnection();
-    // const result = await pool.request().query(querys.getAllProducts); 
     const result = await pool.request().query(querys.getBanco);
     console.log('result ', result)
     res.json(result.recordset);
