@@ -16,13 +16,15 @@ export const LISTAR_TIPO_CAMBIO_WEB = async (req, res) => {
       .request()
       // .input("empresa", sql.Text, empresa)
       // .input("description", sql.Text, description)
-      // .execute(querys.listarTipoCambioWeb);
-      .execute(querys.tspListarBanco);
+      // .input("empresa", sql.VarChar, empresa)
+      .execute(querys.TSP_LISTAR_TIPO_CAMBIO_WEB);
+    // .execute(querys.tspListarBanco);
 
-    // console.log('json result: ', res.json(result.recordsets[0]))
+    console.log('json result: ', result.recordset)
     return res.json(result.recordset);
   } catch (error) {
     res.status(500);
+    console.log('mal mal mal', error);
     res.send(error.message);
   }
 }
