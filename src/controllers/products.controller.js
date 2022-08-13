@@ -1,5 +1,18 @@
 import { getConnection, querys, sql } from "../database";
 
+export const getBancos = async (req, res) => {
+  try {
+    const pool = await getConnection();
+    // const result = await pool.request().query(querys.getAllProducts); 
+    const result = await pool.request().query(querys.getBanco);
+    console.log('result ', result)
+    res.json(result.recordset);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+};
+
 export const getProducts = async (req, res) => {
   try {
     const pool = await getConnection();

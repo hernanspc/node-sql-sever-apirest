@@ -1,4 +1,5 @@
 export const querys = {
+  getBanco: "SELECT * FROM BANCO",
   getAllProducts: "SELECT TOP(500) * FROM [webstore].[dbo].[Products]",
   getProducById: "SELECT * FROM Products Where Id = @Id",
   addNewProduct:

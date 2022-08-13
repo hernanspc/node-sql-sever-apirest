@@ -6,9 +6,12 @@ import {
   deleteProductById,
   getTotalProducts,
   updateProductById,
+  getBancos
 } from "../controllers/products.controller";
 
 const router = Router();
+
+router.get("/banco", getBancos);
 
 router.get("/products", getProducts);
 
