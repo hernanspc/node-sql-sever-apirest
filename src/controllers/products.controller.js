@@ -14,7 +14,6 @@ export const LISTAR_TIPO_CAMBIO_WEB = async (req, res) => {
     const result = await pool
       .request()
       // .input("empresa", sql.Text, empresa)
-      // .input("description", sql.Text, description)
       // .input("empresa", sql.VarChar, empresa)
       .execute(querys.TSP_LISTAR_TIPO_CAMBIO_WEB);
     // .execute(querys.tspListarBanco);
