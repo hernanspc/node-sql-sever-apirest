@@ -13,7 +13,6 @@ export const dbSettings = {
 };
 
 export const getConnection = async (empresa) => {
-  // console.log('--- ', value)
   try {
     const pool = await sql.connect({
       user: config.dbUser,

@@ -1,6 +1,7 @@
 export const querys = {
-  getBanco: "SELECT * FROM BANCO",
   TSP_LISTAR_TIPO_CAMBIO_WEB: "TSP_LISTAR_TIPO_CAMBIO_WEB",
+
+  getBanco: "SELECT * FROM BANCO",
   tspListarBanco: "TSP_LISTAR_BANCO",
   getAllProducts: "SELECT TOP(500) * FROM [webstore].[dbo].[Products]",
   getProducById: "SELECT * FROM Products Where Id = @Id",
