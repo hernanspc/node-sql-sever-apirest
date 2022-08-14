@@ -3,14 +3,13 @@ import { getConnection, querys, sql } from "../database";
 
 export const LISTAR_TIPO_CAMBIO_WEB = async (req, res) => {
   const { empresa } = req.body;
-  console.log('body ', empresa);
 
   if (empresa == null) {
     return res.status(400).json({ msg: "Bad Request. Please fill all fields" });
   }
 
   try {
-    const pool = await getConnection();
+    const pool = await getConnection(empresa);
 
     const result = await pool
       .request()
@@ -20,11 +19,10 @@ export const LISTAR_TIPO_CAMBIO_WEB = async (req, res) => {
       .execute(querys.TSP_LISTAR_TIPO_CAMBIO_WEB);
     // .execute(querys.tspListarBanco);
 
-    console.log('json result: ', result.recordset)
+    // console.log('json result: ', result.recordset)
     return res.json(result.recordset);
   } catch (error) {
     res.status(500);
-    console.log('mal mal mal', error);
     res.send(error.message);
   }
 }

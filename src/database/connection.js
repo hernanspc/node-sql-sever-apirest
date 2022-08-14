@@ -12,9 +12,21 @@ export const dbSettings = {
   },
 };
 
-export const getConnection = async () => {
+export const getConnection = async (empresa) => {
+  // console.log('--- ', value)
   try {
-    const pool = await sql.connect(dbSettings);
+    const pool = await sql.connect({
+      user: config.dbUser,
+      password: config.dbPassword,
+      server: config.dbServer,
+      database: `${empresa}`,
+      options: {
+        encrypt: true, // for azure
+        trustServerCertificate: true, // change to true for local dev / self-signed certs
+      },
+    });
+    // const pool = await sql.connect(...dbSettings, { database: value.toString() });
+    // database: `${value}`,
     return pool;
   } catch (error) {
     console.error(error);
