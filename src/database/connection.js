@@ -25,7 +25,6 @@ export const getConnection = async (empresa) => {
       },
     });
     // const pool = await sql.connect(...dbSettings, { database: value.toString() });
-    // database: `${value}`,
     return pool;
   } catch (error) {
     console.error(error);
